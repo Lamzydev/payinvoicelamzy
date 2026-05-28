@@ -139,8 +139,8 @@ export default function Layout({ page, setPage, children }) {
             </div>
 
             {/* Avatar */}
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-              <span className="text-white text-xs font-bold">U</span>
+            <div className="w-12 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">Lamzy</span>
             </div>
           </div>
         </header>

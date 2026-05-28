@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { Card, Badge, Button, PageHeader, SearchInput, EmptyState, ConfirmDialog, StatCard, Modal } from '../components/ui/index.jsx';
 import { fmt, genId, calcTotal } from '../store/useStore.js';
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { MdOutlinePayment } from "react-icons/md";
+import { CiCreditCard1 } from "react-icons/ci";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 const METHODS = ['Bank Transfer', 'Credit Card', 'Cash', 'PayPal', 'Stripe', 'Manual', 'Other'];
 
@@ -55,9 +60,9 @@ export default function Payments({ store }) {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        <StatCard label="Total Received" value={fmt(totalRevenue)} icon="💰" color="amber"   delay="stagger-1" />
-        <StatCard label="This Month"     value={fmt(thisMonth)}    icon="📅" color="emerald" delay="stagger-2" />
-        <StatCard label="Avg. Payment"   value={fmt(avgPayment)}   icon="📊" color="blue"    delay="stagger-3" sub={`${payments.length} payments`} />
+        <StatCard label="Total Received" value={fmt(totalRevenue)} icon={<RiMoneyDollarCircleFill />} color="amber"   delay="stagger-1" />
+        <StatCard label="This Month"     value={fmt(thisMonth)}    icon={<MdOutlineCalendarMonth />} color="emerald" delay="stagger-2" />
+        <StatCard label="Avg. Payment"   value={fmt(avgPayment)}   icon={<MdOutlinePayment />} color="blue"    delay="stagger-3" sub={`${payments.length} payments`} />
       </div>
 
       {/* Search */}
@@ -68,7 +73,7 @@ export default function Payments({ store }) {
       {/* List */}
       <Card className="animate-fadeUp stagger-3 overflow-hidden">
         {filtered.length === 0 ? (
-          <EmptyState icon="💳" title="No payments recorded" desc="Record your first payment to track revenue"
+          <EmptyState icon={<CiCreditCard1 />} title="No payments recorded" desc="Record your first payment to track revenue"
             action={<Button onClick={() => setModal(true)}>Record Payment</Button>} />
         ) : (
           <>
@@ -100,7 +105,7 @@ export default function Payments({ store }) {
                     <span className="text-sm font-body text-slate-600">{p.date}</span>
                   </div>
                   <div className="hidden md:flex col-span-2 items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-xs">💳</div>
+                    <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-xs"> <CiCreditCard1/> </div>
                     <span className="text-sm font-bold font-body text-slate-800">{p.invoiceId}</span>
                   </div>
                   <div className="hidden md:flex col-span-2 items-center">
@@ -114,7 +119,7 @@ export default function Payments({ store }) {
                   </div>
                   <div className="hidden md:flex col-span-2 items-center justify-end">
                     <button onClick={() => setConfirm(p.id)}
-                      className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center text-slate-400 text-xs transition-colors">🗑️</button>
+                      className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center text-slate-400 text-xs transition-colors"><FaDeleteLeft /></button>
                   </div>
                 </div>
               ))}
@@ -135,7 +140,7 @@ export default function Payments({ store }) {
       <Modal open={modal} onClose={() => setModal(false)} title="Record Payment">
         <div className="space-y-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-slate-600 font-body">Invoice *</label>
+            <label className="text-xs font-semibold text-slate-600 font-body">Invoice </label>
             <select value={form.invoiceId} onChange={e => selectInvoice(e.target.value)}
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 font-body text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-amber-400/30 focus:border-amber-400 appearance-none">
               <option value="">Select invoice…</option>
@@ -172,7 +177,7 @@ export default function Payments({ store }) {
           </div>
           <div className="flex gap-2 justify-end pt-2">
             <Button variant="secondary" onClick={() => setModal(false)}>Cancel</Button>
-            <Button variant="success" onClick={save}>✅ Record Payment</Button>
+            <Button variant="success" onClick={save}> Record Payment</Button>
           </div>
         </div>
       </Modal>

@@ -37,7 +37,6 @@ function save(key, value) {
   try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
 }
 
-// ── helpers ────────────────────────────────────────────────────────────────
 export function calcSubtotal(items) {
   return items.reduce((s, i) => s + (parseFloat(i.qty) || 0) * (parseFloat(i.rate) || 0), 0);
 }
@@ -57,7 +56,7 @@ export function genId() {
   return Math.random().toString(36).slice(2, 10);
 }
 
-// ── hook ────────────────────────────────────────────────────────────────────
+
 export function useStore() {
   const [invoices,  setInvoicesRaw]  = useState(() => load('inv_invoices',  SEED_INVOICES));
   const [clients,   setClientsRaw]   = useState(() => load('inv_clients',   SEED_CLIENTS));
@@ -75,18 +74,18 @@ export function useStore() {
     save(key, typeof val === 'function' ? val([]) : val);
   }, []);
 
-  // We need a fresh-read version
+
   const setInvoices = (v) => { const nv = typeof v === 'function' ? v(invoices) : v; setInvoicesRaw(nv); save('inv_invoices', nv); };
   const setClients  = (v) => { const nv = typeof v === 'function' ? v(clients)  : v; setClientsRaw(nv);  save('inv_clients',  nv); };
   const setPayments = (v) => { const nv = typeof v === 'function' ? v(payments) : v; setPaymentsRaw(nv); save('inv_payments', nv); };
   const setSettings = (v) => { const nv = typeof v === 'function' ? v(settings) : v; setSettingsRaw(nv); save('inv_settings', nv); };
 
-  // ── invoice actions ──
+
   const addInvoice    = (inv) => setInvoices(p => [...p, inv]);
   const updateInvoice = (id, data) => setInvoices(p => p.map(i => i.id === id ? { ...i, ...data } : i));
   const deleteInvoice = (id) => setInvoices(p => p.filter(i => i.id !== id));
 
-  // ── client actions ──
+
   const addClient    = (c) => setClients(p => [...p, c]);
   const updateClient = (id, data) => setClients(p => p.map(c => c.id === id ? { ...c, ...data } : c));
   const deleteClient = (id) => setClients(p => p.filter(c => c.id !== id));

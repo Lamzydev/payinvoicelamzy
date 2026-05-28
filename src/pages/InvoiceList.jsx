@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Badge, Button, Card, SearchInput, EmptyState, ConfirmDialog, Modal, PageHeader } from '../components/ui/index.jsx';
 import { fmt, calcTotal } from '../store/useStore.js';
+import { TbFileInvoiceFilled } from "react-icons/tb";
+import { MdEditSquare } from "react-icons/md";
+import { MdCloudDone } from "react-icons/md";
+import { IoAdd } from "react-icons/io5";
+import { FaDeleteLeft } from "react-icons/fa6";
+import { FcPaid } from "react-icons/fc";
 
 const STATUSES = ['all', 'draft', 'pending', 'paid', 'overdue'];
 
@@ -48,7 +54,7 @@ export default function InvoiceList({ store, setPage, setEditInvoice }) {
   return (
     <div className="page-enter">
       <PageHeader title="Invoices" subtitle={`${invoices.length} total invoices`}
-        action={<Button onClick={() => setPage('create')}>＋ New Invoice</Button>} />
+        action={<Button onClick={() => setPage('create')}> <IoAdd /> New Invoice</Button>} />
 
       {/* Filters */}
       <Card className="p-4 mb-5 animate-fadeUp stagger-1">
@@ -111,7 +117,7 @@ export default function InvoiceList({ store, setPage, setEditInvoice }) {
                     {/* Desktop: row layout */}
                     <div className="hidden md:flex col-span-2 items-center gap-2">
                       <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0">
-                        <span className="text-xs">📄</span>
+                        <span className="text-xs font-bold bg-red-500"> <TbFileInvoiceFilled /> </span>
                       </div>
                       <span className="text-sm font-bold font-body text-slate-800">{inv.id}</span>
                     </div>
@@ -133,13 +139,13 @@ export default function InvoiceList({ store, setPage, setEditInvoice }) {
                     {/* Actions */}
                     <div className="hidden md:flex col-span-1 items-center justify-end gap-1" onClick={e => e.stopPropagation()}>
                       <button onClick={() => { setEditInvoice(inv); setPage('create'); }}
-                        className="w-7 h-7 rounded-lg hover:bg-slate-200 flex items-center justify-center text-slate-400 text-xs transition-colors" title="Edit">✏️</button>
+                        className="w-7 h-7 rounded-lg hover:bg-slate-200 flex items-center justify-center text-slate-400 text-xs transition-colors" title="Edit">< MdEditSquare/> </button>
                       {inv.status !== 'paid' && (
                         <button onClick={() => markPaid(inv)}
-                          className="w-7 h-7 rounded-lg hover:bg-emerald-50 flex items-center justify-center text-slate-400 text-xs transition-colors" title="Mark paid">✅</button>
+                          className="w-7 h-7 rounded-lg hover:bg-emerald-50 flex items-center justify-center text-slate-400 text-xs transition-colors" title="Mark paid"> <FcPaid /> </button>
                       )}
                       <button onClick={() => setConfirm(inv.id)}
-                        className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center text-slate-400 text-xs transition-colors" title="Delete">🗑️</button>
+                        className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center text-slate-400 text-xs transition-colors" title="Delete"> <FaDeleteLeft /> </button>
                     </div>
                   </div>
                 );
@@ -181,8 +187,8 @@ export default function InvoiceList({ store, setPage, setEditInvoice }) {
             </div>
             {preview.notes && <p className="text-xs text-slate-500 font-body bg-slate-50 rounded-xl p-3">{preview.notes}</p>}
             <div className="flex gap-2 justify-end pt-2">
-              <Button variant="secondary" onClick={() => { setEditInvoice(preview); setPreview(null); setPage('create'); }}>✏️ Edit</Button>
-              {preview.status !== 'paid' && <Button variant="success" onClick={() => { markPaid(preview); setPreview(null); }}>✅ Mark Paid</Button>}
+              <Button variant="secondary" onClick={() => { setEditInvoice(preview); setPreview(null); setPage('create'); }}><MdEditSquare /> Edit</Button>
+              {preview.status !== 'paid' && <Button variant="success" onClick={() => { markPaid(preview); setPreview(null); }}><MdCloudDone /> Mark Paid</Button>}
             </div>
           </div>
         </Modal>
@@ -199,7 +205,7 @@ export default function InvoiceList({ store, setPage, setEditInvoice }) {
           </div>
           <div className="flex gap-2 justify-end">
             <Button variant="secondary" onClick={() => setPayModal(null)}>Cancel</Button>
-            <Button variant="success" onClick={confirmPayment}>Confirm Payment ✅</Button>
+            <Button variant="success" onClick={confirmPayment}>Confirm Payment </Button>
           </div>
         </div>
       </Modal>

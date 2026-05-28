@@ -1,5 +1,10 @@
 import { StatCard, Card, Badge, Button, EmptyState } from '../components/ui/index.jsx';
 import { fmt, calcTotal } from '../store/useStore.js';
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { MdOutlineGroupAdd } from "react-icons/md";
+import { FcPaid } from "react-icons/fc";
+import { GiDuel } from "react-icons/gi";
+import { IoAdd } from "react-icons/io5";
 
 function MiniChart({ data, color = '#f59e0b' }) {
   const max = Math.max(...data, 1);
@@ -23,17 +28,17 @@ export default function Dashboard({ store, setPage }) {
       {/* Welcome */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold font-display text-slate-900 tracking-tight">
-          Good morning 👋
+          Good morning 
         </h1>
         <p className="text-sm text-slate-500 font-body mt-1">Here's what's happening with your invoices today.</p>
       </div>
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <StatCard label="Total Revenue"  value={fmt(stats.totalRevenue)} icon="💰" color="amber"   delay="stagger-1" sub="All time" />
-        <StatCard label="Outstanding"    value={fmt(stats.outstanding)}  icon="⏳" color="blue"    delay="stagger-2" sub={`${stats.totalPending + stats.totalOverdue} invoices`} />
-        <StatCard label="Paid Invoices"  value={stats.totalPaid}         icon="✅" color="emerald" delay="stagger-3" sub="Completed" />
-        <StatCard label="Overdue"        value={stats.totalOverdue}      icon="🚨" color="red"     delay="stagger-4" sub="Action needed" />
+        <StatCard label="Total Revenue"  value={fmt(stats.totalRevenue)} icon={[<RiMoneyDollarCircleFill />]} color="amber"   delay="stagger-1" sub="All time" />
+        <StatCard label="Outstanding"    value={fmt(stats.outstanding)}  icon={[<GiDuel />]} color="blue"    delay="stagger-2" sub={`${stats.totalPending + stats.totalOverdue} invoices`} />
+        <StatCard label="Paid Invoices"  value={stats.totalPaid}         icon={[<FcPaid />]} color="emerald" delay="stagger-3" sub="Completed" />
+        <StatCard label="Overdue"        value={stats.totalOverdue}      icon={[<GiDuel />]} color="red"     delay="stagger-4" sub="Action needed" />
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
@@ -93,11 +98,11 @@ export default function Dashboard({ store, setPage }) {
             <div className="space-y-2">
               <button onClick={() => setPage('create')}
                 className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold font-body transition-all">
-                <span>＋</span> Create New Invoice
+                <span> <IoAdd /> </span> Create New Invoice
               </button>
               <button onClick={() => setPage('clients')}
                 className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold font-body transition-all">
-                <span>◎</span> Add New Client
+                <span> <MdOutlineGroupAdd /> </span> Add New Client
               </button>
             </div>
           </div>
@@ -108,7 +113,7 @@ export default function Dashboard({ store, setPage }) {
       <Card className="mt-6 animate-fadeUp stagger-4">
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
           <p className="text-sm font-bold font-display text-slate-800">Recent Invoices</p>
-          <Button variant="ghost" size="sm" onClick={() => setPage('invoices')}>View all →</Button>
+          <Button variant="ghost" size="sm" onClick={() => setPage('invoices')}>View all </Button>
         </div>
         {stats.recentInvoices.length === 0 ? (
           <EmptyState icon="📄" title="No invoices yet" desc="Create your first invoice to get started" action={<Button onClick={() => setPage('create')}>Create Invoice</Button>} />

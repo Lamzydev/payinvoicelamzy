@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Input, Select, Textarea, Button, Card } from '../components/ui/index.jsx';
 import { calcSubtotal, calcTotal, nextInvoiceId, genId, fmt } from '../store/useStore.js';
+import { FaRegSave } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 const EMPTY_ITEM = { id: genId(), desc: '', qty: 1, rate: '' };
 
@@ -64,7 +67,7 @@ export default function CreateInvoice({ store, setPage, editInvoice = null }) {
           <h1 className="text-2xl font-bold font-display text-slate-900">{isEdit ? 'Edit Invoice' : 'New Invoice'}</h1>
           <p className="text-sm text-slate-500 font-body mt-1">{isEdit ? `Editing ${editInvoice.id}` : `Draft · ${nextInvoiceId(store.invoices)}`}</p>
         </div>
-        <Button variant="secondary" onClick={() => setPage('invoices')}>← Back</Button>
+        <Button variant="secondary" onClick={() => setPage('invoices')}> <IoArrowBackCircleSharp /> Back</Button>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
@@ -136,7 +139,7 @@ export default function CreateInvoice({ store, setPage, editInvoice = null }) {
 
             <button onClick={addItem}
               className="mt-4 flex items-center gap-2 text-sm text-amber-600 hover:text-amber-700 font-semibold font-body transition-colors">
-              <span className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center text-xs">＋</span>
+              <span className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center text-xs"><FaPlus /></span>
               Add Line Item
             </button>
           </Card>
@@ -181,15 +184,15 @@ export default function CreateInvoice({ store, setPage, editInvoice = null }) {
           <div className="space-y-2">
             {saved ? (
               <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-center text-sm font-semibold text-emerald-700 font-body animate-scaleIn">
-                ✅ Saved! Redirecting…
+                <FaRegSave /> Saved! Redirecting…
               </div>
             ) : (
               <>
                 <Button className="w-full" onClick={() => save('pending')}>
-                  {isEdit ? '💾 Save Changes' : '📤 Save & Send'}
+                  {isEdit ? '💾 Save Changes' : ' Save & Send'}
                 </Button>
                 <Button variant="secondary" className="w-full" onClick={() => save('draft')}>
-                  💾 Save as Draft
+                  <FaRegSave /> Save as Draft
                 </Button>
               </>
             )}

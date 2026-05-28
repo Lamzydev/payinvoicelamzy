@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { Card, Button, Input, Textarea, Select, PageHeader } from '../components/ui/index.jsx';
+import { FaRegSave } from "react-icons/fa";
+import { MdBusinessCenter } from "react-icons/md";
+import { TbFileInvoiceFilled } from "react-icons/tb";
+import { MdOutlineBrandingWatermark } from "react-icons/md";
+import { MdPreview } from "react-icons/md";
 
 const CURRENCIES = ['USD', 'EUR', 'GBP', 'NGN', 'CAD', 'AUD', 'JPY', 'INR'];
 const TERMS      = ['Net 7', 'Net 14', 'Net 30', 'Net 60', 'Due on Receipt'];
@@ -25,7 +30,7 @@ export default function Settings({ store }) {
         {/* Business info */}
         <Card className="p-6 animate-fadeUp stagger-1">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded-xl bg-amber-100 flex items-center justify-center text-sm">🏢</div>
+            <div className="w-8 h-8 rounded-xl bg-red-400 flex items-center justify-center text-sm"> <MdBusinessCenter /> </div>
             <p className="text-sm font-bold font-display text-slate-800">Business Information</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -42,7 +47,7 @@ export default function Settings({ store }) {
         {/* Invoice preferences */}
         <Card className="p-6 animate-fadeUp stagger-2">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded-xl bg-blue-100 flex items-center justify-center text-sm">📄</div>
+            <div className="w-8 h-8 rounded-xl bg-blue-300 flex items-center justify-center text-sm"> <TbFileInvoiceFilled />  </div>
             <p className="text-sm font-bold font-display text-slate-800">Invoice Preferences</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -64,7 +69,7 @@ export default function Settings({ store }) {
         {/* Brand color */}
         <Card className="p-6 animate-fadeUp stagger-3">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded-xl bg-pink-100 flex items-center justify-center text-sm">🎨</div>
+            <div className="w-8 h-8 rounded-xl bg-blue-300 flex items-center justify-center text-sm"><MdOutlineBrandingWatermark /></div>
             <p className="text-sm font-bold font-display text-slate-800">Brand Color</p>
           </div>
           <div className="flex items-center gap-4">
@@ -87,7 +92,7 @@ export default function Settings({ store }) {
         {/* Preview */}
         <Card className="p-6 animate-fadeUp stagger-4">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center text-sm">👁️</div>
+            <div className="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center text-sm"><MdPreview /></div>
             <p className="text-sm font-bold font-display text-slate-800">Business Preview</p>
           </div>
           <div className="border border-slate-200 rounded-xl p-5 bg-slate-50">
@@ -110,7 +115,7 @@ export default function Settings({ store }) {
         {/* Save */}
         <div className="flex items-center gap-3 pb-4">
           <Button onClick={save} size="lg">
-            {saved ? '✅ Saved!' : '💾 Save Settings'}
+            {saved ? 'Saved!' : 'Save Settings'}
           </Button>
           {saved && <p className="text-sm text-emerald-600 font-semibold font-body animate-fadeIn">Changes saved successfully.</p>}
         </div>

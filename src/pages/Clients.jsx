@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Card, Button, Input, PageHeader, SearchInput, EmptyState, ConfirmDialog, Modal } from '../components/ui/index.jsx';
 import { genId, fmt, calcTotal } from '../store/useStore.js';
+import { BiEdit } from "react-icons/bi";
+import { FaPlus } from "react-icons/fa6";
+import { FaDeleteLeft } from "react-icons/fa6";
+import { IoAdd } from "react-icons/io5";
 
 const EMPTY = { name: '', email: '', phone: '', company: '', address: '' };
 
@@ -49,7 +53,7 @@ export default function Clients({ store, setPage, setEditInvoice }) {
   return (
     <div className="page-enter">
       <PageHeader title="Clients" subtitle={`${clients.length} clients`}
-        action={<Button onClick={openAdd}>＋ Add Client</Button>} />
+        action={<Button onClick={openAdd}> <IoAdd /> Add Client</Button>} />
 
       <div className="mb-5 animate-fadeUp stagger-1">
         <SearchInput value={search} onChange={setSearch} placeholder="Search clients…" />
@@ -91,15 +95,15 @@ export default function Clients({ store, setPage, setEditInvoice }) {
                 <div className="flex gap-2 mt-3 pt-3 border-t border-slate-100">
                   <button onClick={(e) => { e.stopPropagation(); openEdit(c); }}
                     className="flex-1 py-1.5 rounded-lg text-xs font-semibold font-body text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors">
-                    ✏️ Edit
+                    <BiEdit /> Edit
                   </button>
                   <button onClick={(e) => { e.stopPropagation(); setEditInvoice(null); setPage('create'); }}
                     className="flex-1 py-1.5 rounded-lg text-xs font-semibold font-body text-amber-700 bg-amber-50 hover:bg-amber-100 transition-colors">
-                    ＋ Invoice
+                     <FaPlus /> Invoice
                   </button>
                   <button onClick={(e) => { e.stopPropagation(); setConfirm(c.id); }}
                     className="w-8 py-1.5 rounded-lg text-xs font-semibold text-red-400 bg-red-50 hover:bg-red-100 transition-colors">
-                    🗑️
+                    <FaDeleteLeft />
                   </button>
                 </div>
               </Card>
