@@ -6,7 +6,7 @@ import InvoiceList from './pages/InvoiceList.jsx';
 import Clients     from './pages/Clients.jsx';
 import Payments    from './pages/Payments.jsx';
 import Settings    from './pages/Settings.jsx';
-import { useStore } from './store/useStore.js';
+import { useStore } from './store/Usestore.js';
 
 export default function App() {
   const [page,        setPage]        = useState('dashboard');
