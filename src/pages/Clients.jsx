@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Card, Button, Input, PageHeader, SearchInput, EmptyState, ConfirmDialog, Modal } from '../components/ui/index.jsx';
-import { genId, fmt, calcTotal } from '../store/useStore.js';
+import { genId, fmt, calcTotal } from '../store/Usestore.js';
 import { BiEdit } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa6";
 import { FaDeleteLeft } from "react-icons/fa6";
