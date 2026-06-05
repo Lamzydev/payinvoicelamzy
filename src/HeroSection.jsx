@@ -1,4 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { GiFastArrow } from "react-icons/gi";
+import { MdSpatialTracking } from "react-icons/md";
+import { FcIphone } from "react-icons/fc";
+import { HiStatusOffline } from "react-icons/hi";
+import { MdOutlineNightlight } from "react-icons/md";
+import { MdPeople } from "react-icons/md";
+
 
 // ── Auth helpers ──────────────────────────────────────────────────────────────
 function getUsers() {
@@ -89,12 +96,12 @@ export default function HeroSection({ onEnterApp }) {
   function handleLogout() { clearSession(); setSession(null); }
 
   const FEATURES = [
-    { icon: "⚡", title: "Instant Invoices",    desc: "Create professional invoices in under 60 seconds with line items, tax, and notes." },
-    { icon: "📊", title: "Payment Tracking",     desc: "Know exactly what's paid, pending, or overdue — all updated in real time." },
-    { icon: "👥", title: "Client Management",    desc: "Store client details, view history, and manage relationships effortlessly." },
-    { icon: "🌙", title: "Dark & Light Mode",    desc: "Switch themes anytime. Easy on the eyes for those late-night invoicing sessions." },
-    { icon: "💾", title: "Works Offline",        desc: "All data saved locally — no internet needed. Your data stays private." },
-    { icon: "📱", title: "Mobile Ready",         desc: "Fully responsive. Manage your invoices from any device, anywhere." },
+    { icon: [<GiFastArrow />], title: "Instant Invoices",    desc: "Create professional invoices in under 60 seconds with line items, tax, and notes." },
+    { icon: [<MdSpatialTracking />], title: "Payment Tracking",     desc: "Know exactly what's paid, pending, or overdue — all updated in real time." },
+    { icon: [<MdPeople />], title: "Client Management",    desc: "Store client details, view history, and manage relationships effortlessly." },
+    { icon: [<MdOutlineNightlight />], title: "Dark & Light Mode",    desc: "Switch themes anytime. Easy on the eyes for those late-night invoicing sessions." },
+    { icon: [<HiStatusOffline />], title: "Works Offline",        desc: "All data saved locally — no internet needed. Your data stays private." },
+    { icon: [<FcIphone />], title: "Mobile Ready",         desc: "Fully responsive. Manage your invoices from any device, anywhere." },
   ];
 
   const STEPS = [
