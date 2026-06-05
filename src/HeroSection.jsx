@@ -149,10 +149,11 @@ export default function HeroSection({ onEnterApp }) {
           .ftg{grid-template-columns:1fr !important;text-align:center}
           .hm{display:none !important}
           .stg{grid-template-columns:repeat(2,1fr) !important}
+          #hbtn{display:flex !important}
         }
       `}</style>
 
-      {/* NAV BAR  */}
+      {/* NAV */}
       <nav style={{
         position:"fixed",top:0,left:0,right:0,zIndex:100,
         padding:"0 2rem",height:64,
@@ -166,7 +167,7 @@ export default function HeroSection({ onEnterApp }) {
           <div style={{width:32,height:32,borderRadius:9,background:"linear-gradient(135deg,#f59e0b,#d97706)",display:"flex",alignItems:"center",justifyContent:"center"}}>
             <span style={{fontFamily:"'Syne',sans-serif",fontWeight:800,color:"#06070a",fontSize:"0.95rem"}}>PI</span>
           </div>
-          <span style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#eeeef0"}}>PayInvoice</span>
+          <span style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#eeeef0"}}>Invoice</span>
         </a>
 
         <div className="hm" style={{display:"flex",gap:"2.5rem",alignItems:"center"}}>
@@ -191,7 +192,7 @@ export default function HeroSection({ onEnterApp }) {
         </div>
 
         {/* hamburger */}
-        <button onClick={()=>setMenuOpen(v=>!v)} style={{display:"none",background:"none",border:"none",cursor:"pointer",flexDirection:"column",gap:5,padding:4}} id="hbtn">
+        <button onClick={()=>setMenuOpen(v=>!v)} id="hbtn" style={{background:"none",border:"none",cursor:"pointer",padding:4,flexDirection:"column",gap:5}}>
           {[0,1,2].map(i=>(
             <span key={i} style={{display:"block",width:22,height:2,background:"#f59e0b",borderRadius:2,transition:"all 0.3s",
               transform: menuOpen ? (i===0?"rotate(45deg) translate(5px,5px)":i===2?"rotate(-45deg) translate(5px,-5px)":"none") : "none",
@@ -439,7 +440,7 @@ export default function HeroSection({ onEnterApp }) {
           </div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",paddingTop:"1.5rem",flexWrap:"wrap",gap:10}}>
             <p style={{fontFamily:"'Figtree',sans-serif",fontSize:"0.76rem",color:"rgba(238,238,240,0.22)"}}>© {new Date().getFullYear()} PayInvoice. All rights reserved.</p>
-            <p style={{fontFamily:"'Figtree',sans-serif",fontSize:"0.76rem",color:"rgba(238,238,240,0.22)"}}>Built for freelancers worldwide</p>
+            <p style={{fontFamily:"'Figtree',sans-serif",fontSize:"0.76rem",color:"rgba(238,238,240,0.22)"}}>Built with for freelancers worldwide</p>
           </div>
         </div>
       </footer>
