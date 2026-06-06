@@ -120,7 +120,7 @@ export default function HeroSection({ onEnterApp }) {
   return (
     <div style={{ fontFamily: "'Figtree',sans-serif", background: "#06070a", color: "#eeeef0", overflowX: "hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600;700&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
         html{scroll-behavior:smooth}
         ::-webkit-scrollbar{width:4px}
@@ -158,6 +158,9 @@ export default function HeroSection({ onEnterApp }) {
           .stg{grid-template-columns:repeat(2,1fr) !important}
           #hbtn{display:flex !important}
         }
+        @media(min-width:769px){
+          #hbtn{display:none !important}
+        }
       `}</style>
 
       {/* NAV */}
@@ -174,7 +177,7 @@ export default function HeroSection({ onEnterApp }) {
           <div style={{width:32,height:32,borderRadius:9,background:"linear-gradient(135deg,#f59e0b,#d97706)",display:"flex",alignItems:"center",justifyContent:"center"}}>
             <span style={{fontFamily:"'Syne',sans-serif",fontWeight:800,color:"#06070a",fontSize:"0.95rem"}}>PI</span>
           </div>
-          <span style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#eeeef0"}}>Invoice</span>
+          <span style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#eeeef0"}}>PayInvoice</span>
         </a>
 
         <div className="hm" style={{display:"flex",gap:"2.5rem",alignItems:"center"}}>
@@ -276,7 +279,7 @@ export default function HeroSection({ onEnterApp }) {
                 <div style={{background:"#080910",padding:"10px 14px",display:"flex",alignItems:"center",gap:7,borderBottom:"1px solid rgba(255,255,255,0.04)"}}>
                   {["#ef4444","#f59e0b","#22c55e"].map(c=><div key={c} style={{width:9,height:9,borderRadius:"50%",background:c,opacity:0.7}}/>)}
                   <div style={{flex:1,background:"rgba(255,255,255,0.04)",borderRadius:5,height:19,marginLeft:6,display:"flex",alignItems:"center",paddingLeft:8}}>
-                    <span style={{fontSize:"0.65rem",color:"rgba(255,255,255,0.2)"}}>invoicio.app/dashboard</span>
+                    <span style={{fontSize:"0.65rem",color:"rgba(255,255,255,0.2)"}}>Payinvoice.app/dashboard</span>
                   </div>
                 </div>
                 <div style={{padding:"1.25rem"}}>

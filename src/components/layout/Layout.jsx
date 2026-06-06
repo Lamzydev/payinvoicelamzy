@@ -125,12 +125,6 @@ export default function Layout({ page, setPage, children, user, onLogout }) {
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
               <span className="text-white text-xs font-bold">{initials}</span>
             </div>
-            {onLogout && (
-              <button onClick={onLogout}
-                className="md:hidden text-xs text-red-400 hover:text-red-500 font-body font-semibold border border-red-200 px-2 py-1 rounded-lg">
-                Out
-              </button>
-            )}
           </div>
         </header>
 
