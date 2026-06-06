@@ -89,7 +89,7 @@ export default function HeroSection({ onEnterApp }) {
     if (!user) return setError("Invalid email or password.");
     const s = { id: user.id, name: user.name, email: user.email };
     saveSession(s); setSession(s);
-    setSuccess(`Welcome back, ${user.name}!`);
+    setSuccess(`Welcome back)`);
     setTimeout(() => { closeModal(); if (onEnterApp) onEnterApp(s); }, 900);
   }
 
