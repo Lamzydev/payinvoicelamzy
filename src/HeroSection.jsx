@@ -434,7 +434,7 @@ export default function HeroSection({ onEnterApp }) {
                 Smart invoicing for freelancers and small businesses. Free forever.
               </p>
             </div>
-            {[["Product",["Features","Pricing","Changelog","Roadmap"]],["Company",["About","Blog","Careers","Press"]],["Legal",["Privacy","Terms","Cookies","Security"]]].map(([title,links])=>(
+            {[["Product",["Features","Pricing","Changelog","Roadmap"]],["Company",["About","Careers","Press"]],["Legal",["Privacy","Terms","Security"]]].map(([title,links])=>(
               <div key={title}>
                 <p style={{fontFamily:"'Syne',sans-serif",fontWeight:600,fontSize:"0.83rem",marginBottom:14}}>{title}</p>
                 <div style={{display:"flex",flexDirection:"column",gap:9}}>
@@ -450,7 +450,7 @@ export default function HeroSection({ onEnterApp }) {
           </div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",paddingTop:"1.5rem",flexWrap:"wrap",gap:10}}>
             <p style={{fontFamily:"'Figtree',sans-serif",fontSize:"0.76rem",color:"rgba(238,238,240,0.22)"}}>© {new Date().getFullYear()} PayInvoice. All rights reserved.</p>
-            <p style={{fontFamily:"'Figtree',sans-serif",fontSize:"0.76rem",color:"rgba(238,238,240,0.22)"}}>Built with for freelancers worldwide</p>
+            <p style={{fontFamily:"'Figtree',sans-serif",fontSize:"0.76rem",color:"rgba(238,238,240,0.22)"}}>Built for freelancers worldwide</p>
           </div>
         </div>
       </footer>
